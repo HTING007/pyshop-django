@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 
 
@@ -11,3 +11,6 @@ def index(request):
 def new(request):
     return HttpResponse('New product')
 
+def detail(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'detail.html', {'product': product})
