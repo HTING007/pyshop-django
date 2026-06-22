@@ -14,3 +14,16 @@ def new(request):
 def detail(request, id):
     product = get_object_or_404(Product, id=id)
     return render(request, 'detail.html', {'product': product})
+
+def index(request):
+    query = request.GET.get('q')
+
+    if query:
+        products = Product.objects.filter(name__icontains=query)
+    else:
+        products = Product.objects.all()
+
+    return render(request,'index.html',{
+        'products': products,
+        'query': query
+    })
