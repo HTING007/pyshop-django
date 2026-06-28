@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Shopping Cart</h1>
+
+{% if cart_items %}
+    {% for item in cart_items %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>{{ item.product.name }}</h5>
+                <p>Price: ${{ item.product.price }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
+                <p>Subtotal: ${{ item.subtotal|floatformat:2 }}</p>
+                <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger">Remove</a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+
+{% endblock %}
