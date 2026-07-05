@@ -10,6 +10,9 @@
   <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">PyShop</a>
+    <a href="{% url 'cart' %}" class="btn btn-outline-success">
+      Cart({{ cart_count|default:0 }})
+    </a>
 
     <div>
       {% if user.is_authenticated %}
