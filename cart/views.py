@@ -6,7 +6,6 @@ from django.views.decorators.http import require_POST
 
 def cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
-    cart_count = CartItem.objects.filter(user=request.user).count()
 
     total = 0
     for item in cart_items:
@@ -15,7 +14,6 @@ def cart(request):
     return render(request,'cart.html',{
         'cart_items': cart_items,
         'total': total,
-        'cart_count': cart_count
     })
 
 @require_POST
