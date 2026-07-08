@@ -22,9 +22,10 @@
                     View Details
                 </a>
 
-                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">
-                    Add to Cart
-                </a>
+                <form method="post" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
             </div>
         </div>
         </div>

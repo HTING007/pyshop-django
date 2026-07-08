@@ -18,6 +18,7 @@ def cart(request):
         'cart_count': cart_count
     })
 
+@require_POST
 def add_to_cart(request,product_id):
     product = get_object_or_404(Product,id=product_id)
 
@@ -32,6 +33,7 @@ def add_to_cart(request,product_id):
 
     return redirect('cart')
 
+@require_POST
 def remove_from_cart(request,item_id):
     item = get_object_or_404(CartItem,id=item_id,user=request.user)
     item.delete()
