@@ -27,3 +27,15 @@ def index(request):
         'products': products,
         'query': query
     })
+
+def index(request):
+    category = request.GET.get('category')
+    products = Product.objects.all()
+
+    if category:
+        products = products.filter(category=category)
+
+    return render(request,'index.html',{
+        'products': products,
+        'category': category
+    })

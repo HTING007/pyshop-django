@@ -29,7 +29,7 @@ def add_to_cart(request,product_id):
         cart_item.quantity += 1
         cart_item.save()
 
-    return redirect('cart')
+    return redirect('/')
 
 @require_POST
 def remove_from_cart(request,item_id):
@@ -53,3 +53,9 @@ def increase_quantity(request,item_id):
     item.quantity += 1
     item.save()
     return redirect('cart')
+
+@require_POST
+def checkout(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    cart_items.delete()
+    return render(request,'success.html')

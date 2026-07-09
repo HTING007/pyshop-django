@@ -7,6 +7,12 @@
                value="{{ query|default:'' }}">
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
+    <div class="mb-4">
+        <a href="/" class="btn btn-outline-secondary">All</a>
+        <a href="/?category=fruit" class="btn btn-outline-primary">Fruit</a>
+        <a href="/?category=drink" class="btn btn-outline-primary">Drink</a>
+        <a href="/?category=snack" class="btn btn-outline-primary">Snack</a>
+    </div>
     <div class="row">
         {% for product in products %}
         <div class="col-md-4 mb-4">
