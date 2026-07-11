@@ -3,9 +3,14 @@
 {% block content %}
     <h1>Products</h1>
     <form method="get" class="mb-4">
-        <input type="text" name="q" placeholder="Search products..."
-               value="{{ query|default:'' }}">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <input type="text"
+           name="q"
+           placeholder="Search products..."
+           value="{{ query|default:'' }}">
+
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
     </form>
     <div class="mb-4">
         <a href="/" class="btn btn-outline-secondary">All</a>

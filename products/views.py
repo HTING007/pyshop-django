@@ -17,25 +17,18 @@ def detail(request, id):
 
 def index(request):
     query = request.GET.get('q')
+    category = request.GET.get('category')
+
+    products = Product.objects.all()
 
     if query:
-        products = Product.objects.filter(name__icontains=query)
-    else:
-        products = Product.objects.all()
-
-    return render(request,'index.html',{
-        'products': products,
-        'query': query
-    })
-
-def index(request):
-    category = request.GET.get('category')
-    products = Product.objects.all()
+        products = products.filter(name__icontains=query)
 
     if category:
         products = products.filter(category=category)
 
-    return render(request,'index.html',{
+    return render(request, 'index.html', {
         'products': products,
-        'category': category
+        'query': query,
+        'category': category,
     })
