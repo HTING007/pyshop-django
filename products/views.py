@@ -4,20 +4,8 @@ from .models import Product
 
 
 def index(request):
-    products = Product.objects.all()
-    return render(request, 'index.html',
-                  {'products':products})
-
-def new(request):
-    return HttpResponse('New product')
-
-def detail(request, id):
-    product = get_object_or_404(Product, id=id)
-    return render(request, 'detail.html', {'product': product})
-
-def index(request):
-    query = request.GET.get('q')
-    category = request.GET.get('category')
+    query = request.GET.get('q', '').strip()
+    category = request.GET.get('category', '').strip()
 
     products = Product.objects.all()
 
@@ -32,3 +20,12 @@ def index(request):
         'query': query,
         'category': category,
     })
+
+
+def new(request):
+    return HttpResponse('New product')
+
+
+def detail(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'detail.html', {'product': product})
