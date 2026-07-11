@@ -5,7 +5,7 @@ from django.views.decorators.http import require_POST
 
 
 def cart(request):
-    cart_items = CartItem.objects.filter(user=request.user)
+    cart_items = CartItem.objects.filter(user=request.user).order_by('id')
 
     total = 0
     for item in cart_items:

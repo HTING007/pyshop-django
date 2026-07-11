@@ -11,7 +11,13 @@
         <div class="d-flex gap-2">
             <a href="/" class="btn btn-secondary">Back</a>
 
-            <form method="post" action="{% url 'add_to_cart' product.id %}">
+            <form method="post"
+                action="{% url 'add_to_cart' product.id %}"
+                onsubmit="
+                    if (this.dataset.submitted === 'true') return false;
+                    this.dataset.submitted = 'true';
+                    this.querySelector('button').disabled = true;
+                ">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
             </form>
