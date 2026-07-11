@@ -18,12 +18,16 @@
                 <div class="d-flex align-items-center gap-2 mt-3">
                     <span class="fw-semibold">Qty:</span>
 
-                    <form method="post" action="{% url 'decrease_quantity' item.id %}">
+                    <form method="post"
+                        action="{% url 'decrease_quantity' item.id %}"
+                        onsubmit="this.querySelector('button').disabled = true;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger btn-sm">-</button>
                     </form>
                     <span class="fw-bold">{{ item.quantity }}</span>
-                    <form method="post" action="{% url 'increase_quantity' item.id %}">
+                    <form method="post"
+                        action="{% url 'increase_quantity' item.id %}"
+                        onsubmit="this.querySelector('button').disabled = true;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-success btn-sm">+</button>
                     </form>
